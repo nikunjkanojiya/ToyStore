@@ -1,0 +1,107 @@
+[
+  {
+    "productname": "Soft Sensory Rings",
+    "price": 18.5,
+    "agerange": "0-1",
+    "image": "/src/assets/logo.png",
+    "tag": "New"
+  },
+  {
+    "productname": "Crinkle Cloth Book",
+    "price": 12.99,
+    "agerange": "0-1",
+    "image": "/src/assets/logo.png",
+    "tag": "Bestseller"
+  },
+  {
+    "productname": "Stack & Nest Cups",
+    "price": 14.75,
+    "agerange": "0-1",
+    "image": "/src/assets/logo.png",
+    "tag": "Popular"
+  },
+  {
+    "productname": "Musical Rattle Set",
+    "price": 16.2,
+    "agerange": "0-1",
+    "image": "/src/assets/logo.png",
+    "tag": "Gift"
+  },
+  {
+    "productname": "Rainbow Shape Sorter",
+    "price": 22.4,
+    "agerange": "2-4",
+    "image": "/src/assets/logo.png",
+    "tag": "Bestseller"
+  },
+  {
+    "productname": "Wooden Train Track",
+    "price": 34.9,
+    "agerange": "2-4",
+    "image": "/src/assets/logo.png",
+    "tag": "New"
+  },
+  {
+    "productname": "Animal Puzzle Box",
+    "price": 19.95,
+    "agerange": "2-4",
+    "image": "/src/assets/logo.png",
+    "tag": "Popular"
+  },
+  {
+    "productname": "Little Chef Play Set",
+    "price": 27.6,
+    "agerange": "2-4",
+    "image": "/src/assets/logo.png",
+    "tag": "Gift"
+  },
+  {
+    "productname": "Magnetic Building Tiles",
+    "price": 39.99,
+    "agerange": "5-8",
+    "image": "/src/assets/logo.png",
+    "tag": "Bestseller"
+  },
+  {
+    "productname": "Dinosaur Adventure Kit",
+    "price": 24.8,
+    "agerange": "5-8",
+    "image": "/src/assets/logo.png",
+    "tag": "New"
+  },
+  {
+    "productname": "Science Discovery Lab",
+    "price": 44.5,
+    "agerange": "5-8",
+    "image": "/src/assets/logo.png",
+    "tag": "Popular"
+  },
+  {
+    "productname": "Creative Art Easel",
+    "price": 31.25,
+    "agerange": "5-8",
+    "image": "/src/assets/logo.png",
+    "tag": "Gift"
+  },
+  {
+    "productname": "Remote Control Rally Car",
+    "price": 49.9,
+    "agerange": "8+",
+    "image": "/src/assets/logo.png",
+    "tag": "Bestseller"
+  },
+  {
+    "productname": "STEM Robotics Kit",
+    "price": 59.95,
+    "agerange": "8+",
+    "image": "/src/assets/logo.png",
+    "tag": "New"
+  },
+  {
+    "productname": "Strategy Board Game",
+    "price": 29.5,
+    "agerange": "8+",
+    "image": "/src/assets/logo.png",
+    "tag": "Popular"
+  }
+]

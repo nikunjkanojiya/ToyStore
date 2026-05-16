@@ -47,12 +47,26 @@
             </div>
 
             <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-              <div class="flow-root">
-                <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Sign in</a>
-              </div>
-              <div class="flow-root">
-                <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Create account</a>
-              </div>
+              <template v-if="auth.isAuthenticated">
+                <p class="-m-2 block p-2 font-medium text-gray-900">
+                  Hi, {{ auth.currentUser?.name }}
+                </p>
+                <button
+                  type="button"
+                  class="-m-2 block w-full p-2 text-left font-medium text-gray-900"
+                  @click="signOut"
+                >
+                  Sign out
+                </button>
+              </template>
+              <template v-else>
+                <RouterLink class="-m-2 block p-2 font-medium text-gray-900" to="/sign-in">
+                  Sign in
+                </RouterLink>
+                <RouterLink class="-m-2 block p-2 font-medium text-gray-900" to="/create-account">
+                  Create account
+                </RouterLink>
+              </template>
             </div>
 
             <div class="border-t border-gray-200 px-4 py-6">
@@ -78,7 +92,7 @@
         Get free delivery on orders over $100
       </p>
 
-      <nav aria-label="Top" class="mx-auto px-4 max-w-9/10 sm:px-6 lg:px-8">
+      <nav aria-label="Top" class="mx-auto max-w-9/10 px-4 sm:px-6 lg:px-8">
         <div class="border-b border-gray-200">
           <div class="flex h-16 items-center">
             <button
@@ -106,15 +120,13 @@
               </svg>
             </button>
 
-            <!-- Logo -->
             <div class="ml-4 flex lg:ml-0">
-              <a href="#">
+              <RouterLink to="/">
                 <span class="sr-only">ToyStore</span>
                 <img src="/src/assets/logo.png" alt="logo" class="h-8 w-auto" />
-              </a>
+              </RouterLink>
             </div>
 
-            <!-- Flyout menus -->
             <el-popover-group class="group/popover-group hidden lg:ml-8 lg:block lg:self-stretch">
               <div class="flex h-full space-x-8">
                 <RouterLink
@@ -142,13 +154,34 @@
 
             <div class="ml-auto flex items-center">
               <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >Sign in</a
-                >
-                <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
-                <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >Create account</a
-                >
+                <template v-if="auth.isAuthenticated">
+                  <span class="text-sm font-medium text-gray-700">
+                    Hi, {{ auth.currentUser?.name }}
+                  </span>
+                  <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
+                  <button
+                    type="button"
+                    class="text-sm font-medium text-gray-700 hover:text-gray-800"
+                    @click="signOut"
+                  >
+                    Sign out
+                  </button>
+                </template>
+                <template v-else>
+                  <RouterLink
+                    to="/sign-in"
+                    class="text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    Sign in
+                  </RouterLink>
+                  <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
+                  <RouterLink
+                    to="/create-account"
+                    class="text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    Create account
+                  </RouterLink>
+                </template>
               </div>
 
               <div class="hidden lg:ml-8 lg:flex">
@@ -163,7 +196,6 @@
                 </a>
               </div>
 
-              <!-- Search -->
               <div class="flex lg:ml-6">
                 <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
                   <span class="sr-only">Search</span>
@@ -185,7 +217,6 @@
                 </a>
               </div>
 
-              <!-- Cart -->
               <div class="ml-4 flow-root lg:ml-6">
                 <a href="#" class="group -m-2 flex items-center p-2">
                   <svg
@@ -219,6 +250,13 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+
+const auth = useAuthStore()
+
+function signOut() {
+  auth.logout()
+}
 </script>
 
 <style scoped></style>

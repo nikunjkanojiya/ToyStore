@@ -1,64 +1,119 @@
 <template>
-  <div class="bg-white">
-    <div class="flex justify-around p-4">
-      <div>
-        <img src="/src/assets/logo.png" alt="logo" class="h-8 w-auto" />
-        <p>
-          Bringing smiles and safe play to every doorstep, because childhood dreams deserve the
-          best.
+  <footer class="mt-auto border-t border-amber-100 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <img src="/src/assets/logo.png" alt="ToyStore logo" class="h-10 w-auto" />
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-gray-600">
+            Bringing smiles and safe play to every doorstep, because childhood dreams deserve the
+            best.
+          </p>
+          <div class="mt-6 flex gap-3">
+            <a
+              v-for="social in socialLinks"
+              :key="social.name"
+              :href="social.href"
+              :aria-label="social.name"
+              class="flex size-10 items-center justify-center rounded-full bg-white text-gray-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-amber-400 hover:text-gray-900 hover:ring-amber-300"
+            >
+              <component :is="social.icon" class="size-5" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+
+        <div v-for="column in linkColumns" :key="column.title">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-gray-900">
+            {{ column.title }}
+          </h4>
+          <ul class="mt-4 space-y-3">
+            <li v-for="link in column.links" :key="link.label">
+              <RouterLink
+                :to="link.to"
+                class="text-sm text-gray-600 transition hover:text-amber-700"
+              >
+                {{ link.label }}
+              </RouterLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-8 text-center sm:flex-row sm:text-left"
+      >
+        <p class="text-sm text-gray-500">
+          &copy; {{ currentYear }} ToyStore. All rights reserved.
         </p>
-        <div>Icons</div>
-      </div>
-      <div>
-        <h4>Quick links</h4>
-        <RouterLink
-          class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-          to="/"
-          >Home</RouterLink
-        >
-        <RouterLink
-          class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-          to="/"
-          >Home</RouterLink
-        >
-        <RouterLink
-          class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-          to="/"
-          >Home</RouterLink
-        >
-      </div>
-      <div>
-        <h4>Supports</h4>
-        <RouterLink
-          class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-          to="/"
-          >Home</RouterLink
-        >
-        <RouterLink
-          class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-          to="/"
-          >Home</RouterLink
-        >
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <RouterLink
-          class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-          to="/"
-          >Home</RouterLink
-        >
-        <RouterLink
-          class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-          to="/"
-          >Home</RouterLink
-        >
+        <p class="text-sm text-gray-500">Made with care for little dreamers.</p>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script setup>
 import { RouterLink } from 'vue-router'
+import { h } from 'vue'
+
+const currentYear = new Date().getFullYear()
+
+const linkColumns = [
+  {
+    title: 'Quick links',
+    links: [
+      { label: 'Home', to: '/' },
+      { label: 'Shop', to: '/shop' },
+      { label: 'About', to: '/about' },
+    ],
+  },
+  {
+    title: 'Support',
+    links: [
+      { label: 'Contact', to: '/contact' },
+      { label: 'FAQ', to: '/faq' },
+      { label: 'Cart', to: '/cart' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', to: '/' },
+      { label: 'Terms of Service', to: '/' },
+    ],
+  },
+]
+
+const IconFacebook = () =>
+  h(
+    'svg',
+    { viewBox: '0 0 24 24', fill: 'currentColor' },
+    h('path', {
+      d: 'M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z',
+    }),
+  )
+
+const IconInstagram = () =>
+  h(
+    'svg',
+    { viewBox: '0 0 24 24', fill: 'currentColor' },
+    h('path', {
+      d: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z',
+    }),
+  )
+
+const IconTwitter = () =>
+  h(
+    'svg',
+    { viewBox: '0 0 24 24', fill: 'currentColor' },
+    h('path', {
+      d: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z',
+    }),
+  )
+
+const socialLinks = [
+  { name: 'Facebook', href: '#', icon: IconFacebook },
+  { name: 'Instagram', href: '#', icon: IconInstagram },
+  { name: 'X (Twitter)', href: '#', icon: IconTwitter },
+]
 </script>
 
 <style scoped></style>

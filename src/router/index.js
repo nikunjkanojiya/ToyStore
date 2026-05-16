@@ -7,7 +7,8 @@ import ContactView from '@/views/ContactView.vue'
 import FaqView from '@/views/FaqView.vue'
 import ShopView from '@/views/ShopView.vue'
 import ProductView from '@/views/ProductView.vue'
-
+import SignInView from '@/views/SignInView.vue'
+import CreateAccountView from '@/views/CreateAccountView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -50,6 +51,16 @@ const router = createRouter({
       path: '/product',
       name: 'product',
       component: ProductView,
+    },
+    {
+      path: '/sign-in',
+      name: 'sign-in',
+      component: SignInView,
+    },
+    {
+      path: '/create-account',
+      name: 'create-account',
+      component: CreateAccountView,
     },
   ],
 })
